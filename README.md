@@ -1,4 +1,4 @@
-UART Implementation in VHDL
+#UART Implementation in VHDL
 Project Overview
 This project implements a Universal Asynchronous Receiver-Transmitter (UART) system using VHDL on an Altera DE2 FPGA board. The UART system is designed to facilitate serial communication between devices without requiring a shared clock signal. The implementation includes both transmitter and receiver modules, a programmable baud rate generator, and a test environment.
 
