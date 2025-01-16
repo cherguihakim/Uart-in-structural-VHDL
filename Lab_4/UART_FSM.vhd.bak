@@ -1,0 +1,21 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY UART_FSM IS 
+PORT (i_clock, i_resetBar, present_state, finish_shifting : IN STD_LOGIC ;
+      o_caractere_8bits : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)                         );
+		
+END ENTITY; 
+
+ARCHITECTURE STRUCT OF UART_FSM IS 
+
+COMPONENT enARdFF_2 IS
+	PORT(
+		i_resetBar	: IN	STD_LOGIC;
+		i_d		: IN	STD_LOGIC;
+		i_enable	: IN	STD_LOGIC;
+		i_clock		: IN	STD_LOGIC;
+		o_q, o_qBar	: OUT	STD_LOGIC);
+		
+END COMPONENT ; 
+

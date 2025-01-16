@@ -1,0 +1,31 @@
+# do Laboratoire4.do 
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module diagram_test_uart_fsm_with_uart_emetteur
+# 
+# Top level modules:
+# 	diagram_test_uart_fsm_with_uart_emetteur
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module diagram_test_uart_fsm_with_uart_emetteur_vlg_sample_tst
+# -- Compiling module diagram_test_uart_fsm_with_uart_emetteur_vlg_check_tst
+# -- Compiling module diagram_test_uart_fsm_with_uart_emetteur_vlg_vec_tst
+# 
+# Top level modules:
+# 	diagram_test_uart_fsm_with_uart_emetteur_vlg_vec_tst
+# vsim -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate -c -voptargs=\"+acc\" -t 1ps -novopt work.diagram_test_uart_fsm_with_uart_emetteur_vlg_vec_tst 
+# Loading work.diagram_test_uart_fsm_with_uart_emetteur_vlg_vec_tst
+# Loading work.diagram_test_uart_fsm_with_uart_emetteur
+# Loading cycloneive_ver.cycloneive_io_obuf
+# Loading cycloneive_ver.cycloneive_io_ibuf
+# Loading cycloneive_ver.cycloneive_clkctrl
+# Loading cycloneive_ver.cycloneive_mux41
+# Loading cycloneive_ver.cycloneive_ena_reg
+# Loading cycloneive_ver.cycloneive_lcell_comb
+# Loading altera_ver.dffeas
+# Loading work.diagram_test_uart_fsm_with_uart_emetteur_vlg_sample_tst
+# Loading work.diagram_test_uart_fsm_with_uart_emetteur_vlg_check_tst
+# Loading altera_ver.PRIM_GDFF_LOW
+# Simulation passed !
+# ** Note: $finish    : Simulation_diagram_test.vwf.vt(156)
+#    Time: 3 us  Iteration: 0  Instance: /diagram_test_uart_fsm_with_uart_emetteur_vlg_vec_tst/tb_out

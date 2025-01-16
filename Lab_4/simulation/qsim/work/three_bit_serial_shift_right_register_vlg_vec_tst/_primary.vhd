@@ -1,0 +1,4 @@
+library verilog;
+use verilog.vl_types.all;
+entity three_bit_serial_shift_right_register_vlg_vec_tst is
+end three_bit_serial_shift_right_register_vlg_vec_tst;

@@ -1,0 +1,34 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY controleur_emetteur IS 
+PORT (i_resetBar, i_clock, load_emetteur, Load_RTD, data_sent : IN STD_LOGIC;
+      Load_RDTD, RTDV, shift_droite_RDTD : OUT STD_LOGIC );
+
+END ENTITY;
+
+ARCHITECTURE OF controleur_emetteur IS 
+SIGNAL int_y : STD_LOGIC;
+
+COMPONENT enARdFF_2
+		PORT(
+			i_resetBar	: IN	STD_LOGIC;
+			i_d		: IN	STD_LOGIC;
+			i_enable	: IN	STD_LOGIC;
+			i_clock		: IN	STD_LOGIC;
+			o_q, o_qBar	: OUT	STD_LOGIC);
+END COMPONENT;
+
+BEGIN 
+
+Y : enARdFF_2 
+PORT MAP (i_resetBar => i_resetBar,
+          i_clock => i_clock,
+          i_d => (int_y AND NOT(data_sent)) OR (NOT(int_y) AND Load_RTD),
+          i_enable => load_emetteur,
+          o_q => int_y    );
+
+			 
+Load_RDTD <= NOT(int_y);
+RTDV <= NOT(int_y);
+shift_droite_RDTD <= int_y;

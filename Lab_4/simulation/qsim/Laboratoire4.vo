@@ -1,0 +1,1535 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
+
+// DATE "12/01/2023 17:06:48"
+
+// 
+// Device: Altera EP4CE115F29C7 Package FBGA780
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module diagram_test_uart_fsm_with_uart_emetteur (
+	o_TxD,
+	CLOCK,
+	RESET_BAR,
+	LOAD_UART_FSM,
+	STATE,
+	LOAD_CONTROLEUR);
+output 	o_TxD;
+input 	CLOCK;
+input 	RESET_BAR;
+input 	LOAD_UART_FSM;
+input 	[1:0] STATE;
+input 	LOAD_CONTROLEUR;
+
+// Design Ports Information
+// o_TxD	=>  Location: PIN_D12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// CLOCK	=>  Location: PIN_J1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// RESET_BAR	=>  Location: PIN_Y2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// LOAD_CONTROLEUR	=>  Location: PIN_D14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// STATE[0]	=>  Location: PIN_C12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// STATE[1]	=>  Location: PIN_D13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// LOAD_UART_FSM	=>  Location: PIN_C13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \o_TxD~output_o ;
+wire \CLOCK~input_o ;
+wire \CLOCK~inputclkctrl_outclk ;
+wire \STATE[0]~input_o ;
+wire \STATE[1]~input_o ;
+wire \inst1|comb~13_combout ;
+wire \inst1|comb~6_combout ;
+wire \inst1|comb~11_combout ;
+wire \inst1|comb~12_combout ;
+wire \inst1|comb~16_combout ;
+wire \inst1|comb~17_combout ;
+wire \inst1|comb~14_combout ;
+wire \RESET_BAR~input_o ;
+wire \RESET_BAR~inputclkctrl_outclk ;
+wire \LOAD_UART_FSM~input_o ;
+wire \inst1|Y1|int_q~q ;
+wire \inst1|comb~7_combout ;
+wire \inst1|comb~10_combout ;
+wire \inst1|comb~8_combout ;
+wire \inst1|comb~9_combout ;
+wire \inst1|comb~18_combout ;
+wire \inst1|comb~19_combout ;
+wire \inst1|Y2|int_q~q ;
+wire \inst1|comb~2_combout ;
+wire \inst1|comb~15_combout ;
+wire \inst1|comb~4_combout ;
+wire \inst1|comb~3_combout ;
+wire \inst1|comb~5_combout ;
+wire \inst1|Y0|int_q~q ;
+wire \inst1|Multiplexeur|Mux5~0_combout ;
+wire \inst|CONTOLEUR_UART_EMETTEUR|RTDV~0_combout ;
+wire \inst|RTD_UART_EMETTEUR|bit2|int_q~q ;
+wire \inst1|Multiplexeur|Mux7~0_combout ;
+wire \inst|RTD_UART_EMETTEUR|bit0|int_q~q ;
+wire \inst1|Multiplexeur|Mux2~0_combout ;
+wire \inst|RTD_UART_EMETTEUR|bit5|int_q~q ;
+wire \inst1|Multiplexeur|Mux3~0_combout ;
+wire \inst|RTD_UART_EMETTEUR|bit4|int_q~q ;
+wire \inst1|Multiplexeur|Mux4~0_combout ;
+wire \inst|RTD_UART_EMETTEUR|bit3|int_q~q ;
+wire \inst1|Multiplexeur|Mux1~0_combout ;
+wire \inst|RTD_UART_EMETTEUR|bit6|int_q~q ;
+wire \inst|RTD_UART_EMETTEUR|sending_data_done~0_combout ;
+wire \inst1|Multiplexeur|Mux6~0_combout ;
+wire \inst|RTD_UART_EMETTEUR|bit1|int_q~q ;
+wire \inst|RTD_UART_EMETTEUR|sending_data_done~combout ;
+wire \inst|CONTOLEUR_UART_EMETTEUR|comb~0_combout ;
+wire \LOAD_CONTROLEUR~input_o ;
+wire \inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~0_combout ;
+wire \inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~0_combout ;
+wire \inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~q ;
+wire \inst|CONTOLEUR_UART_EMETTEUR|RTDV~1_combout ;
+wire \inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~0_combout ;
+wire \inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~2_combout ;
+wire \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~3_combout ;
+wire \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ;
+wire \inst|CONTOLEUR_UART_EMETTEUR|comb~1_combout ;
+wire \inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ;
+wire \inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout ;
+wire \inst|RDTD_UART_EMETTEUR|bit8|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|comb~7_combout ;
+wire \inst|RDTD_UART_EMETTEUR|bit7|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|comb~6_combout ;
+wire \inst|RDTD_UART_EMETTEUR|bit6|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|comb~5_combout ;
+wire \inst|RDTD_UART_EMETTEUR|bit5|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|comb~4_combout ;
+wire \inst|RDTD_UART_EMETTEUR|bit4|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|comb~3_combout ;
+wire \inst|RDTD_UART_EMETTEUR|bit3|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|comb~2_combout ;
+wire \inst|RDTD_UART_EMETTEUR|bit2|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|comb~1_combout ;
+wire \inst|RDTD_UART_EMETTEUR|bit1|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|comb~0_combout ;
+wire \inst|RDTD_UART_EMETTEUR|bit0|int_q~q ;
+wire \inst|RDTD_UART_EMETTEUR|o_Value~combout ;
+
+
+// Location: IOOBUF_X52_Y73_N23
+cycloneive_io_obuf \o_TxD~output (
+	.i(\inst|RDTD_UART_EMETTEUR|o_Value~combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\o_TxD~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \o_TxD~output .bus_hold = "false";
+defparam \o_TxD~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y36_N8
+cycloneive_io_ibuf \CLOCK~input (
+	.i(CLOCK),
+	.ibar(gnd),
+	.o(\CLOCK~input_o ));
+// synopsys translate_off
+defparam \CLOCK~input .bus_hold = "false";
+defparam \CLOCK~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G2
+cycloneive_clkctrl \CLOCK~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\CLOCK~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\CLOCK~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \CLOCK~inputclkctrl .clock_type = "global clock";
+defparam \CLOCK~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: IOIBUF_X52_Y73_N15
+cycloneive_io_ibuf \STATE[0]~input (
+	.i(STATE[0]),
+	.ibar(gnd),
+	.o(\STATE[0]~input_o ));
+// synopsys translate_off
+defparam \STATE[0]~input .bus_hold = "false";
+defparam \STATE[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X54_Y73_N8
+cycloneive_io_ibuf \STATE[1]~input (
+	.i(STATE[1]),
+	.ibar(gnd),
+	.o(\STATE[1]~input_o ));
+// synopsys translate_off
+defparam \STATE[1]~input .bus_hold = "false";
+defparam \STATE[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N16
+cycloneive_lcell_comb \inst1|comb~13 (
+// Equation(s):
+// \inst1|comb~13_combout  = (\inst1|Y0|int_q~q  & (!\inst1|Y2|int_q~q  & !\inst1|Y1|int_q~q )) # (!\inst1|Y0|int_q~q  & ((\inst1|Y1|int_q~q )))
+
+	.dataa(\inst1|Y0|int_q~q ),
+	.datab(gnd),
+	.datac(\inst1|Y2|int_q~q ),
+	.datad(\inst1|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|comb~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~13 .lut_mask = 16'h550A;
+defparam \inst1|comb~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N20
+cycloneive_lcell_comb \inst1|comb~6 (
+// Equation(s):
+// \inst1|comb~6_combout  = (!\STATE[1]~input_o  & (!\STATE[0]~input_o  & \inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ))
+
+	.dataa(gnd),
+	.datab(\STATE[1]~input_o ),
+	.datac(\STATE[0]~input_o ),
+	.datad(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~6_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~6 .lut_mask = 16'h0300;
+defparam \inst1|comb~6 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N6
+cycloneive_lcell_comb \inst1|comb~11 (
+// Equation(s):
+// \inst1|comb~11_combout  = (\STATE[0]~input_o  & (\STATE[1]~input_o  $ (((\inst1|Y1|int_q~q ) # (!\inst1|Y2|int_q~q ))))) # (!\STATE[0]~input_o  & (\STATE[1]~input_o  & ((\inst1|Y2|int_q~q ) # (\inst1|Y1|int_q~q ))))
+
+	.dataa(\STATE[0]~input_o ),
+	.datab(\STATE[1]~input_o ),
+	.datac(\inst1|Y2|int_q~q ),
+	.datad(\inst1|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|comb~11_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~11 .lut_mask = 16'h66C2;
+defparam \inst1|comb~11 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N26
+cycloneive_lcell_comb \inst1|comb~12 (
+// Equation(s):
+// \inst1|comb~12_combout  = (!\inst1|Y0|int_q~q  & (\inst1|comb~11_combout  & \inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ))
+
+	.dataa(gnd),
+	.datab(\inst1|Y0|int_q~q ),
+	.datac(\inst1|comb~11_combout ),
+	.datad(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~12_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~12 .lut_mask = 16'h3000;
+defparam \inst1|comb~12 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N2
+cycloneive_lcell_comb \inst1|comb~16 (
+// Equation(s):
+// \inst1|comb~16_combout  = ((!\inst1|Y2|int_q~q  & (\STATE[1]~input_o  & \STATE[0]~input_o ))) # (!\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout )
+
+	.dataa(\inst1|Y2|int_q~q ),
+	.datab(\STATE[1]~input_o ),
+	.datac(\STATE[0]~input_o ),
+	.datad(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~16_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~16 .lut_mask = 16'h40FF;
+defparam \inst1|comb~16 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N0
+cycloneive_lcell_comb \inst1|comb~17 (
+// Equation(s):
+// \inst1|comb~17_combout  = (\inst1|Y1|int_q~q  & (\inst1|comb~16_combout  & ((!\inst1|Y0|int_q~q ) # (!\inst1|Y2|int_q~q ))))
+
+	.dataa(\inst1|Y2|int_q~q ),
+	.datab(\inst1|Y1|int_q~q ),
+	.datac(\inst1|Y0|int_q~q ),
+	.datad(\inst1|comb~16_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~17_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~17 .lut_mask = 16'h4C00;
+defparam \inst1|comb~17 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N28
+cycloneive_lcell_comb \inst1|comb~14 (
+// Equation(s):
+// \inst1|comb~14_combout  = (\inst1|comb~12_combout ) # ((\inst1|comb~17_combout ) # ((\inst1|comb~13_combout  & \inst1|comb~6_combout )))
+
+	.dataa(\inst1|comb~13_combout ),
+	.datab(\inst1|comb~6_combout ),
+	.datac(\inst1|comb~12_combout ),
+	.datad(\inst1|comb~17_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~14_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~14 .lut_mask = 16'hFFF8;
+defparam \inst1|comb~14 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y36_N15
+cycloneive_io_ibuf \RESET_BAR~input (
+	.i(RESET_BAR),
+	.ibar(gnd),
+	.o(\RESET_BAR~input_o ));
+// synopsys translate_off
+defparam \RESET_BAR~input .bus_hold = "false";
+defparam \RESET_BAR~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G4
+cycloneive_clkctrl \RESET_BAR~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\RESET_BAR~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\RESET_BAR~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \RESET_BAR~inputclkctrl .clock_type = "global clock";
+defparam \RESET_BAR~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: IOIBUF_X54_Y73_N1
+cycloneive_io_ibuf \LOAD_UART_FSM~input (
+	.i(LOAD_UART_FSM),
+	.ibar(gnd),
+	.o(\LOAD_UART_FSM~input_o ));
+// synopsys translate_off
+defparam \LOAD_UART_FSM~input .bus_hold = "false";
+defparam \LOAD_UART_FSM~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N29
+dffeas \inst1|Y1|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst1|comb~14_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\LOAD_UART_FSM~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst1|Y1|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst1|Y1|int_q .is_wysiwyg = "true";
+defparam \inst1|Y1|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N14
+cycloneive_lcell_comb \inst1|comb~7 (
+// Equation(s):
+// \inst1|comb~7_combout  = (\inst1|Y0|int_q~q  & (((\inst1|Y1|int_q~q )))) # (!\inst1|Y0|int_q~q  & (\STATE[0]~input_o  & (!\STATE[1]~input_o )))
+
+	.dataa(\STATE[0]~input_o ),
+	.datab(\STATE[1]~input_o ),
+	.datac(\inst1|Y0|int_q~q ),
+	.datad(\inst1|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|comb~7_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~7 .lut_mask = 16'hF202;
+defparam \inst1|comb~7 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N8
+cycloneive_lcell_comb \inst1|comb~10 (
+// Equation(s):
+// \inst1|comb~10_combout  = (\inst1|Y0|int_q~q  & ((\inst1|Y2|int_q~q  & ((\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ))) # (!\inst1|Y2|int_q~q  & (\inst1|comb~7_combout ))))
+
+	.dataa(\inst1|Y2|int_q~q ),
+	.datab(\inst1|Y0|int_q~q ),
+	.datac(\inst1|comb~7_combout ),
+	.datad(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~10_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~10 .lut_mask = 16'hC840;
+defparam \inst1|comb~10 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N24
+cycloneive_lcell_comb \inst1|comb~8 (
+// Equation(s):
+// \inst1|comb~8_combout  = (\inst1|Y2|int_q~q  & (((!\inst1|comb~7_combout  & !\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout )) # (!\inst1|Y0|int_q~q ))) # (!\inst1|Y2|int_q~q  & (\inst1|comb~7_combout  & 
+// ((\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ))))
+
+	.dataa(\inst1|Y2|int_q~q ),
+	.datab(\inst1|comb~7_combout ),
+	.datac(\inst1|Y0|int_q~q ),
+	.datad(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~8_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~8 .lut_mask = 16'h4E2A;
+defparam \inst1|comb~8 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N18
+cycloneive_lcell_comb \inst1|comb~9 (
+// Equation(s):
+// \inst1|comb~9_combout  = (\STATE[0]~input_o  & (\inst1|Y1|int_q~q  $ (((\STATE[1]~input_o  & !\inst1|Y0|int_q~q ))))) # (!\STATE[0]~input_o  & (\STATE[1]~input_o  & ((!\inst1|Y1|int_q~q ))))
+
+	.dataa(\STATE[0]~input_o ),
+	.datab(\STATE[1]~input_o ),
+	.datac(\inst1|Y0|int_q~q ),
+	.datad(\inst1|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|comb~9_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~9 .lut_mask = 16'hA24C;
+defparam \inst1|comb~9 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N6
+cycloneive_lcell_comb \inst1|comb~18 (
+// Equation(s):
+// \inst1|comb~18_combout  = (\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout  & ((\inst1|comb~9_combout ) # ((\inst1|comb~10_combout  & \inst1|comb~6_combout )))) # (!\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout  & (((\inst1|comb~6_combout ) 
+// # (!\inst1|comb~10_combout ))))
+
+	.dataa(\inst1|comb~9_combout ),
+	.datab(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.datac(\inst1|comb~10_combout ),
+	.datad(\inst1|comb~6_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~18_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~18 .lut_mask = 16'hFB8B;
+defparam \inst1|comb~18 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N10
+cycloneive_lcell_comb \inst1|comb~19 (
+// Equation(s):
+// \inst1|comb~19_combout  = (\inst1|comb~18_combout  & (\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout  $ (\inst1|comb~10_combout  $ (\inst1|comb~8_combout )))) # (!\inst1|comb~18_combout  & (\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout  & 
+// (!\inst1|comb~10_combout  & \inst1|comb~8_combout )))
+
+	.dataa(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.datab(\inst1|comb~10_combout ),
+	.datac(\inst1|comb~8_combout ),
+	.datad(\inst1|comb~18_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~19_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~19 .lut_mask = 16'h9620;
+defparam \inst1|comb~19 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N11
+dffeas \inst1|Y2|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst1|comb~19_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\LOAD_UART_FSM~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst1|Y2|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst1|Y2|int_q .is_wysiwyg = "true";
+defparam \inst1|Y2|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N22
+cycloneive_lcell_comb \inst1|comb~2 (
+// Equation(s):
+// \inst1|comb~2_combout  = (\STATE[1]~input_o  & (((\inst1|Y0|int_q~q  & !\inst1|Y2|int_q~q )))) # (!\STATE[1]~input_o  & (\inst1|Y0|int_q~q  $ (((\inst1|Y2|int_q~q ) # (!\STATE[0]~input_o )))))
+
+	.dataa(\STATE[0]~input_o ),
+	.datab(\STATE[1]~input_o ),
+	.datac(\inst1|Y0|int_q~q ),
+	.datad(\inst1|Y2|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|comb~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~2 .lut_mask = 16'h03E1;
+defparam \inst1|comb~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N12
+cycloneive_lcell_comb \inst1|comb~15 (
+// Equation(s):
+// \inst1|comb~15_combout  = (\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout  & ((\inst1|comb~2_combout ))) # (!\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout  & (\inst1|Y0|int_q~q ))
+
+	.dataa(gnd),
+	.datab(\inst1|Y0|int_q~q ),
+	.datac(\inst1|comb~2_combout ),
+	.datad(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~15_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~15 .lut_mask = 16'hF0CC;
+defparam \inst1|comb~15 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N30
+cycloneive_lcell_comb \inst1|comb~4 (
+// Equation(s):
+// \inst1|comb~4_combout  = ((\STATE[0]~input_o  & (!\inst1|comb~2_combout  & \inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ))) # (!\inst1|Y2|int_q~q )
+
+	.dataa(\inst1|Y2|int_q~q ),
+	.datab(\STATE[0]~input_o ),
+	.datac(\inst1|comb~2_combout ),
+	.datad(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~4_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~4 .lut_mask = 16'h5D55;
+defparam \inst1|comb~4 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N16
+cycloneive_lcell_comb \inst1|comb~3 (
+// Equation(s):
+// \inst1|comb~3_combout  = (\inst1|Y0|int_q~q  & (((!\STATE[0]~input_o  & \inst1|comb~2_combout )) # (!\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ))) # (!\inst1|Y0|int_q~q  & (((\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ))))
+
+	.dataa(\STATE[0]~input_o ),
+	.datab(\inst1|Y0|int_q~q ),
+	.datac(\inst1|comb~2_combout ),
+	.datad(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~3 .lut_mask = 16'h73CC;
+defparam \inst1|comb~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N4
+cycloneive_lcell_comb \inst1|comb~5 (
+// Equation(s):
+// \inst1|comb~5_combout  = (\inst1|Y1|int_q~q  & (((\inst1|comb~4_combout  & \inst1|comb~3_combout )))) # (!\inst1|Y1|int_q~q  & (\inst1|comb~15_combout ))
+
+	.dataa(\inst1|comb~15_combout ),
+	.datab(\inst1|Y1|int_q~q ),
+	.datac(\inst1|comb~4_combout ),
+	.datad(\inst1|comb~3_combout ),
+	.cin(gnd),
+	.combout(\inst1|comb~5_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|comb~5 .lut_mask = 16'hE222;
+defparam \inst1|comb~5 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N5
+dffeas \inst1|Y0|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst1|comb~5_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\LOAD_UART_FSM~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst1|Y0|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst1|Y0|int_q .is_wysiwyg = "true";
+defparam \inst1|Y0|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N30
+cycloneive_lcell_comb \inst1|Multiplexeur|Mux5~0 (
+// Equation(s):
+// \inst1|Multiplexeur|Mux5~0_combout  = (\inst1|Y1|int_q~q  & ((!\inst1|Y2|int_q~q ))) # (!\inst1|Y1|int_q~q  & (\inst1|Y0|int_q~q ))
+
+	.dataa(\inst1|Y0|int_q~q ),
+	.datab(gnd),
+	.datac(\inst1|Y2|int_q~q ),
+	.datad(\inst1|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|Multiplexeur|Mux5~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|Multiplexeur|Mux5~0 .lut_mask = 16'h0FAA;
+defparam \inst1|Multiplexeur|Mux5~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N18
+cycloneive_lcell_comb \inst|CONTOLEUR_UART_EMETTEUR|RTDV~0 (
+// Equation(s):
+// \inst|CONTOLEUR_UART_EMETTEUR|RTDV~0_combout  = (!\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & !\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|CONTOLEUR_UART_EMETTEUR|RTDV~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|CONTOLEUR_UART_EMETTEUR|RTDV~0 .lut_mask = 16'h000F;
+defparam \inst|CONTOLEUR_UART_EMETTEUR|RTDV~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N31
+dffeas \inst|RTD_UART_EMETTEUR|bit2|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst1|Multiplexeur|Mux5~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|RTDV~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RTD_UART_EMETTEUR|bit2|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RTD_UART_EMETTEUR|bit2|int_q .is_wysiwyg = "true";
+defparam \inst|RTD_UART_EMETTEUR|bit2|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N2
+cycloneive_lcell_comb \inst1|Multiplexeur|Mux7~0 (
+// Equation(s):
+// \inst1|Multiplexeur|Mux7~0_combout  = (\inst1|Y0|int_q~q  & (\inst1|Y2|int_q~q  & !\inst1|Y1|int_q~q )) # (!\inst1|Y0|int_q~q  & (!\inst1|Y2|int_q~q  & \inst1|Y1|int_q~q ))
+
+	.dataa(\inst1|Y0|int_q~q ),
+	.datab(gnd),
+	.datac(\inst1|Y2|int_q~q ),
+	.datad(\inst1|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|Multiplexeur|Mux7~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|Multiplexeur|Mux7~0 .lut_mask = 16'h05A0;
+defparam \inst1|Multiplexeur|Mux7~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N3
+dffeas \inst|RTD_UART_EMETTEUR|bit0|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst1|Multiplexeur|Mux7~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|RTDV~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RTD_UART_EMETTEUR|bit0|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RTD_UART_EMETTEUR|bit0|int_q .is_wysiwyg = "true";
+defparam \inst|RTD_UART_EMETTEUR|bit0|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N10
+cycloneive_lcell_comb \inst1|Multiplexeur|Mux2~0 (
+// Equation(s):
+// \inst1|Multiplexeur|Mux2~0_combout  = (\inst1|Y0|int_q~q  & (!\inst1|Y2|int_q~q  & !\inst1|Y1|int_q~q )) # (!\inst1|Y0|int_q~q  & (\inst1|Y2|int_q~q ))
+
+	.dataa(\inst1|Y0|int_q~q ),
+	.datab(gnd),
+	.datac(\inst1|Y2|int_q~q ),
+	.datad(\inst1|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|Multiplexeur|Mux2~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|Multiplexeur|Mux2~0 .lut_mask = 16'h505A;
+defparam \inst1|Multiplexeur|Mux2~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N11
+dffeas \inst|RTD_UART_EMETTEUR|bit5|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst1|Multiplexeur|Mux2~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|RTDV~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RTD_UART_EMETTEUR|bit5|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RTD_UART_EMETTEUR|bit5|int_q .is_wysiwyg = "true";
+defparam \inst|RTD_UART_EMETTEUR|bit5|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N20
+cycloneive_lcell_comb \inst1|Multiplexeur|Mux3~0 (
+// Equation(s):
+// \inst1|Multiplexeur|Mux3~0_combout  = (\inst1|Y0|int_q~q  & (\inst1|Y2|int_q~q  $ (!\inst1|Y1|int_q~q ))) # (!\inst1|Y0|int_q~q  & ((!\inst1|Y1|int_q~q ) # (!\inst1|Y2|int_q~q )))
+
+	.dataa(\inst1|Y0|int_q~q ),
+	.datab(gnd),
+	.datac(\inst1|Y2|int_q~q ),
+	.datad(\inst1|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|Multiplexeur|Mux3~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|Multiplexeur|Mux3~0 .lut_mask = 16'hA55F;
+defparam \inst1|Multiplexeur|Mux3~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N21
+dffeas \inst|RTD_UART_EMETTEUR|bit4|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst1|Multiplexeur|Mux3~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|RTDV~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RTD_UART_EMETTEUR|bit4|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RTD_UART_EMETTEUR|bit4|int_q .is_wysiwyg = "true";
+defparam \inst|RTD_UART_EMETTEUR|bit4|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N26
+cycloneive_lcell_comb \inst1|Multiplexeur|Mux4~0 (
+// Equation(s):
+// \inst1|Multiplexeur|Mux4~0_combout  = \inst1|Y1|int_q~q  $ (((\inst1|Y0|int_q~q  & \inst1|Y2|int_q~q )))
+
+	.dataa(\inst1|Y0|int_q~q ),
+	.datab(gnd),
+	.datac(\inst1|Y2|int_q~q ),
+	.datad(\inst1|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|Multiplexeur|Mux4~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|Multiplexeur|Mux4~0 .lut_mask = 16'h5FA0;
+defparam \inst1|Multiplexeur|Mux4~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N27
+dffeas \inst|RTD_UART_EMETTEUR|bit3|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst1|Multiplexeur|Mux4~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|RTDV~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RTD_UART_EMETTEUR|bit3|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RTD_UART_EMETTEUR|bit3|int_q .is_wysiwyg = "true";
+defparam \inst|RTD_UART_EMETTEUR|bit3|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N24
+cycloneive_lcell_comb \inst1|Multiplexeur|Mux1~0 (
+// Equation(s):
+// \inst1|Multiplexeur|Mux1~0_combout  = ((\inst1|Y1|int_q~q ) # (!\inst1|Y2|int_q~q )) # (!\inst1|Y0|int_q~q )
+
+	.dataa(\inst1|Y0|int_q~q ),
+	.datab(gnd),
+	.datac(\inst1|Y2|int_q~q ),
+	.datad(\inst1|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|Multiplexeur|Mux1~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|Multiplexeur|Mux1~0 .lut_mask = 16'hFF5F;
+defparam \inst1|Multiplexeur|Mux1~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N25
+dffeas \inst|RTD_UART_EMETTEUR|bit6|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst1|Multiplexeur|Mux1~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|RTDV~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RTD_UART_EMETTEUR|bit6|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RTD_UART_EMETTEUR|bit6|int_q .is_wysiwyg = "true";
+defparam \inst|RTD_UART_EMETTEUR|bit6|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N4
+cycloneive_lcell_comb \inst|RTD_UART_EMETTEUR|sending_data_done~0 (
+// Equation(s):
+// \inst|RTD_UART_EMETTEUR|sending_data_done~0_combout  = (\inst|RTD_UART_EMETTEUR|bit5|int_q~q ) # ((\inst|RTD_UART_EMETTEUR|bit4|int_q~q ) # ((\inst|RTD_UART_EMETTEUR|bit3|int_q~q ) # (\inst|RTD_UART_EMETTEUR|bit6|int_q~q )))
+
+	.dataa(\inst|RTD_UART_EMETTEUR|bit5|int_q~q ),
+	.datab(\inst|RTD_UART_EMETTEUR|bit4|int_q~q ),
+	.datac(\inst|RTD_UART_EMETTEUR|bit3|int_q~q ),
+	.datad(\inst|RTD_UART_EMETTEUR|bit6|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RTD_UART_EMETTEUR|sending_data_done~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RTD_UART_EMETTEUR|sending_data_done~0 .lut_mask = 16'hFFFE;
+defparam \inst|RTD_UART_EMETTEUR|sending_data_done~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N12
+cycloneive_lcell_comb \inst1|Multiplexeur|Mux6~0 (
+// Equation(s):
+// \inst1|Multiplexeur|Mux6~0_combout  = \inst1|Y0|int_q~q  $ (((\inst1|Y2|int_q~q ) # (\inst1|Y1|int_q~q )))
+
+	.dataa(\inst1|Y0|int_q~q ),
+	.datab(gnd),
+	.datac(\inst1|Y2|int_q~q ),
+	.datad(\inst1|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst1|Multiplexeur|Mux6~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst1|Multiplexeur|Mux6~0 .lut_mask = 16'h555A;
+defparam \inst1|Multiplexeur|Mux6~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N13
+dffeas \inst|RTD_UART_EMETTEUR|bit1|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst1|Multiplexeur|Mux6~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|RTDV~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RTD_UART_EMETTEUR|bit1|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RTD_UART_EMETTEUR|bit1|int_q .is_wysiwyg = "true";
+defparam \inst|RTD_UART_EMETTEUR|bit1|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N28
+cycloneive_lcell_comb \inst|RTD_UART_EMETTEUR|sending_data_done (
+// Equation(s):
+// \inst|RTD_UART_EMETTEUR|sending_data_done~combout  = (\inst|RTD_UART_EMETTEUR|bit2|int_q~q ) # ((\inst|RTD_UART_EMETTEUR|bit0|int_q~q ) # ((\inst|RTD_UART_EMETTEUR|sending_data_done~0_combout ) # (\inst|RTD_UART_EMETTEUR|bit1|int_q~q )))
+
+	.dataa(\inst|RTD_UART_EMETTEUR|bit2|int_q~q ),
+	.datab(\inst|RTD_UART_EMETTEUR|bit0|int_q~q ),
+	.datac(\inst|RTD_UART_EMETTEUR|sending_data_done~0_combout ),
+	.datad(\inst|RTD_UART_EMETTEUR|bit1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RTD_UART_EMETTEUR|sending_data_done~combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RTD_UART_EMETTEUR|sending_data_done .lut_mask = 16'hFFFE;
+defparam \inst|RTD_UART_EMETTEUR|sending_data_done .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N0
+cycloneive_lcell_comb \inst|CONTOLEUR_UART_EMETTEUR|comb~0 (
+// Equation(s):
+// \inst|CONTOLEUR_UART_EMETTEUR|comb~0_combout  = (!\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & ((!\inst|RTD_UART_EMETTEUR|sending_data_done~combout ) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q )))
+
+	.dataa(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.datab(gnd),
+	.datac(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datad(\inst|RTD_UART_EMETTEUR|sending_data_done~combout ),
+	.cin(gnd),
+	.combout(\inst|CONTOLEUR_UART_EMETTEUR|comb~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|CONTOLEUR_UART_EMETTEUR|comb~0 .lut_mask = 16'h0555;
+defparam \inst|CONTOLEUR_UART_EMETTEUR|comb~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: IOIBUF_X52_Y73_N8
+cycloneive_io_ibuf \LOAD_CONTROLEUR~input (
+	.i(LOAD_CONTROLEUR),
+	.ibar(gnd),
+	.o(\LOAD_CONTROLEUR~input_o ));
+// synopsys translate_off
+defparam \LOAD_CONTROLEUR~input .bus_hold = "false";
+defparam \LOAD_CONTROLEUR~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N1
+dffeas \inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|CONTOLEUR_UART_EMETTEUR|comb~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\LOAD_CONTROLEUR~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q .is_wysiwyg = "true";
+defparam \inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N30
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~0 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~0_combout  = (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & (!\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q  & \inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ))
+
+	.dataa(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datab(gnd),
+	.datac(\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q ),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~0 .lut_mask = 16'h0500;
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N31
+dffeas \inst|RDTD_UART_EMETTEUR|Counter|y0|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y0|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y0|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N26
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~0 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~0_combout  = (\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & (\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q  $ (\inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~q ))))
+
+	.dataa(\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q ),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.datac(\inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~q ),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~0 .lut_mask = 16'h0048;
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N27
+dffeas \inst|RDTD_UART_EMETTEUR|Counter|y1|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y1|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y1|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N8
+cycloneive_lcell_comb \inst|CONTOLEUR_UART_EMETTEUR|RTDV~1 (
+// Equation(s):
+// \inst|CONTOLEUR_UART_EMETTEUR|RTDV~1_combout  = (\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & !\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|CONTOLEUR_UART_EMETTEUR|RTDV~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|CONTOLEUR_UART_EMETTEUR|RTDV~1 .lut_mask = 16'h00F0;
+defparam \inst|CONTOLEUR_UART_EMETTEUR|RTDV~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N4
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~0 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~0_combout  = (\inst|CONTOLEUR_UART_EMETTEUR|RTDV~1_combout  & (\inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~q  $ (((\inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~q  & \inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q )))))
+
+	.dataa(\inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~q ),
+	.datab(\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q ),
+	.datac(\inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~q ),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|RTDV~1_combout ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~0 .lut_mask = 16'h7800;
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N5
+dffeas \inst|RDTD_UART_EMETTEUR|Counter|y2|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y2|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y2|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N22
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~2 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~2_combout  = \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~q  $ (((\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q  & (\inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~q  & \inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~q ))))
+
+	.dataa(\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q ),
+	.datab(\inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~q ),
+	.datac(\inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~q ),
+	.datad(\inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~2 .lut_mask = 16'h7F80;
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N28
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~3 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~3_combout  = (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & (\inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~2_combout  & \inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ))
+
+	.dataa(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datab(gnd),
+	.datac(\inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~2_combout ),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~3 .lut_mask = 16'h5000;
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N29
+dffeas \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~3_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N24
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout  = (\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q  & (!\inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~q  & (!\inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~q  & \inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~q )))
+
+	.dataa(\inst|RDTD_UART_EMETTEUR|Counter|y0|int_q~q ),
+	.datab(\inst|RDTD_UART_EMETTEUR|Counter|y2|int_q~q ),
+	.datac(\inst|RDTD_UART_EMETTEUR|Counter|y1|int_q~q ),
+	.datad(\inst|RDTD_UART_EMETTEUR|Counter|y3|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0 .lut_mask = 16'h0200;
+defparam \inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N22
+cycloneive_lcell_comb \inst|CONTOLEUR_UART_EMETTEUR|comb~1 (
+// Equation(s):
+// \inst|CONTOLEUR_UART_EMETTEUR|comb~1_combout  = (\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & (((!\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & \inst|RTD_UART_EMETTEUR|sending_data_done~combout )))) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & 
+// (!\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout  & (\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q )))
+
+	.dataa(\inst|RDTD_UART_EMETTEUR|Comparateur|out_eq~0_combout ),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datac(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.datad(\inst|RTD_UART_EMETTEUR|sending_data_done~combout ),
+	.cin(gnd),
+	.combout(\inst|CONTOLEUR_UART_EMETTEUR|comb~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|CONTOLEUR_UART_EMETTEUR|comb~1 .lut_mask = 16'h1C10;
+defparam \inst|CONTOLEUR_UART_EMETTEUR|comb~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N23
+dffeas \inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|CONTOLEUR_UART_EMETTEUR|comb~1_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\LOAD_CONTROLEUR~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q .is_wysiwyg = "true";
+defparam \inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N22
+cycloneive_lcell_comb \inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0 (
+// Equation(s):
+// \inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout  = \inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  $ (\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q )
+
+	.dataa(gnd),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datac(gnd),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0 .lut_mask = 16'h33CC;
+defparam \inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X52_Y72_N23
+dffeas \inst|RDTD_UART_EMETTEUR|bit8|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\inst|CONTOLEUR_UART_EMETTEUR|RTDV~1_combout ),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|bit8|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|bit8|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|bit8|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N14
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|comb~7 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|comb~7_combout  = (\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & ((\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & ((\inst|RTD_UART_EMETTEUR|bit6|int_q~q ))) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & 
+// (\inst|RDTD_UART_EMETTEUR|bit8|int_q~q )))) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & (((\inst|RTD_UART_EMETTEUR|bit6|int_q~q ))))
+
+	.dataa(\inst|RDTD_UART_EMETTEUR|bit8|int_q~q ),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.datac(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datad(\inst|RTD_UART_EMETTEUR|bit6|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|comb~7_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|comb~7 .lut_mask = 16'hFB08;
+defparam \inst|RDTD_UART_EMETTEUR|comb~7 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X52_Y72_N15
+dffeas \inst|RDTD_UART_EMETTEUR|bit7|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|comb~7_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|bit7|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|bit7|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|bit7|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N24
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|comb~6 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|comb~6_combout  = (\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & (((\inst|RTD_UART_EMETTEUR|bit5|int_q~q )))) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & ((\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & 
+// (\inst|RDTD_UART_EMETTEUR|bit7|int_q~q )) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & ((\inst|RTD_UART_EMETTEUR|bit5|int_q~q )))))
+
+	.dataa(\inst|RDTD_UART_EMETTEUR|bit7|int_q~q ),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datac(\inst|RTD_UART_EMETTEUR|bit5|int_q~q ),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|comb~6_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|comb~6 .lut_mask = 16'hE2F0;
+defparam \inst|RDTD_UART_EMETTEUR|comb~6 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X52_Y72_N25
+dffeas \inst|RDTD_UART_EMETTEUR|bit6|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|comb~6_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|bit6|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|bit6|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|bit6|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N30
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|comb~5 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|comb~5_combout  = (\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & ((\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & (\inst|RTD_UART_EMETTEUR|bit4|int_q~q )) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & 
+// ((\inst|RDTD_UART_EMETTEUR|bit6|int_q~q ))))) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & (\inst|RTD_UART_EMETTEUR|bit4|int_q~q ))
+
+	.dataa(\inst|RTD_UART_EMETTEUR|bit4|int_q~q ),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.datac(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datad(\inst|RDTD_UART_EMETTEUR|bit6|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|comb~5_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|comb~5 .lut_mask = 16'hAEA2;
+defparam \inst|RDTD_UART_EMETTEUR|comb~5 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X52_Y72_N31
+dffeas \inst|RDTD_UART_EMETTEUR|bit5|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|comb~5_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|bit5|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|bit5|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|bit5|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N12
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|comb~4 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|comb~4_combout  = (\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & ((\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & ((\inst|RTD_UART_EMETTEUR|bit3|int_q~q ))) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & 
+// (\inst|RDTD_UART_EMETTEUR|bit5|int_q~q )))) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & (((\inst|RTD_UART_EMETTEUR|bit3|int_q~q ))))
+
+	.dataa(\inst|RDTD_UART_EMETTEUR|bit5|int_q~q ),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.datac(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datad(\inst|RTD_UART_EMETTEUR|bit3|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|comb~4_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|comb~4 .lut_mask = 16'hFB08;
+defparam \inst|RDTD_UART_EMETTEUR|comb~4 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X52_Y72_N13
+dffeas \inst|RDTD_UART_EMETTEUR|bit4|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|comb~4_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|bit4|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|bit4|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|bit4|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N26
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|comb~3 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|comb~3_combout  = (\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & (((\inst|RTD_UART_EMETTEUR|bit2|int_q~q )))) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & ((\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & 
+// (\inst|RDTD_UART_EMETTEUR|bit4|int_q~q )) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & ((\inst|RTD_UART_EMETTEUR|bit2|int_q~q )))))
+
+	.dataa(\inst|RDTD_UART_EMETTEUR|bit4|int_q~q ),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datac(\inst|RTD_UART_EMETTEUR|bit2|int_q~q ),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|comb~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|comb~3 .lut_mask = 16'hE2F0;
+defparam \inst|RDTD_UART_EMETTEUR|comb~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X52_Y72_N27
+dffeas \inst|RDTD_UART_EMETTEUR|bit3|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|comb~3_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|bit3|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|bit3|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|bit3|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N28
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|comb~2 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|comb~2_combout  = (\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & (((\inst|RTD_UART_EMETTEUR|bit1|int_q~q )))) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & ((\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & 
+// (\inst|RDTD_UART_EMETTEUR|bit3|int_q~q )) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & ((\inst|RTD_UART_EMETTEUR|bit1|int_q~q )))))
+
+	.dataa(\inst|RDTD_UART_EMETTEUR|bit3|int_q~q ),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datac(\inst|RTD_UART_EMETTEUR|bit1|int_q~q ),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|comb~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|comb~2 .lut_mask = 16'hE2F0;
+defparam \inst|RDTD_UART_EMETTEUR|comb~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X52_Y72_N29
+dffeas \inst|RDTD_UART_EMETTEUR|bit2|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|comb~2_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|bit2|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|bit2|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|bit2|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N20
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|comb~1 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|comb~1_combout  = (\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & (\inst|RTD_UART_EMETTEUR|bit0|int_q~q )) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & ((\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & 
+// ((\inst|RDTD_UART_EMETTEUR|bit2|int_q~q ))) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q  & (\inst|RTD_UART_EMETTEUR|bit0|int_q~q ))))
+
+	.dataa(\inst|RTD_UART_EMETTEUR|bit0|int_q~q ),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datac(\inst|RDTD_UART_EMETTEUR|bit2|int_q~q ),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|comb~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|comb~1 .lut_mask = 16'hB8AA;
+defparam \inst|RDTD_UART_EMETTEUR|comb~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X52_Y72_N21
+dffeas \inst|RDTD_UART_EMETTEUR|bit1|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|comb~1_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|bit1|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|bit1|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|bit1|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N16
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|comb~0 (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|comb~0_combout  = (!\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q  & (\inst|RDTD_UART_EMETTEUR|bit1|int_q~q  & \inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ))
+
+	.dataa(gnd),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datac(\inst|RDTD_UART_EMETTEUR|bit1|int_q~q ),
+	.datad(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|comb~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|comb~0 .lut_mask = 16'h3000;
+defparam \inst|RDTD_UART_EMETTEUR|comb~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X52_Y72_N17
+dffeas \inst|RDTD_UART_EMETTEUR|bit0|int_q (
+	.clk(\CLOCK~inputclkctrl_outclk ),
+	.d(\inst|RDTD_UART_EMETTEUR|comb~0_combout ),
+	.asdata(vcc),
+	.clrn(\RESET_BAR~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\inst|CONTOLEUR_UART_EMETTEUR|load_RDTD~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst|RDTD_UART_EMETTEUR|bit0|int_q~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|bit0|int_q .is_wysiwyg = "true";
+defparam \inst|RDTD_UART_EMETTEUR|bit0|int_q .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N18
+cycloneive_lcell_comb \inst|RDTD_UART_EMETTEUR|o_Value (
+// Equation(s):
+// \inst|RDTD_UART_EMETTEUR|o_Value~combout  = ((\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ) # (\inst|RDTD_UART_EMETTEUR|bit0|int_q~q )) # (!\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q )
+
+	.dataa(gnd),
+	.datab(\inst|CONTOLEUR_UART_EMETTEUR|Y1|int_q~q ),
+	.datac(\inst|CONTOLEUR_UART_EMETTEUR|Y0|int_q~q ),
+	.datad(\inst|RDTD_UART_EMETTEUR|bit0|int_q~q ),
+	.cin(gnd),
+	.combout(\inst|RDTD_UART_EMETTEUR|o_Value~combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst|RDTD_UART_EMETTEUR|o_Value .lut_mask = 16'hFFF3;
+defparam \inst|RDTD_UART_EMETTEUR|o_Value .sum_lutc_input = "datac";
+// synopsys translate_on
+
+assign o_TxD = \o_TxD~output_o ;
+
+endmodule

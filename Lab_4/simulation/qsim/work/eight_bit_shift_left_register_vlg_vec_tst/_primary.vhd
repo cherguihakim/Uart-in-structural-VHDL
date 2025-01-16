@@ -1,0 +1,4 @@
+library verilog;
+use verilog.vl_types.all;
+entity eight_bit_shift_left_register_vlg_vec_tst is
+end eight_bit_shift_left_register_vlg_vec_tst;

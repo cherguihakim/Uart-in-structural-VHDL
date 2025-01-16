@@ -1,0 +1,106 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY UART_FSM IS 
+PORT (i_clock, i_resetBar, finish_shifting, load_UART_FSM, RTDV_UART_EMETTEUR : IN STD_LOGIC ;
+      present_state : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+		load_RTD : OUT STD_LOGIC;
+      o_caractere_8bits : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)                         );
+		
+END ENTITY; 
+
+ARCHITECTURE STRUCT OF UART_FSM IS 
+
+SIGNAL INT_Y2, INT_Y1, INT_Y0 : STD_LOGIC;
+SIGNAL W2, W1, W0 : STD_LOGIC;
+SIGNAL INT_RTDV : STD_LOGIC;
+SIGNAL int_sortie_UART_FSM : STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+COMPONENT enARdFF_2 IS
+	PORT(
+		i_resetBar	: IN	STD_LOGIC;
+		i_d		: IN	STD_LOGIC;
+		i_enable	: IN	STD_LOGIC;
+		i_clock		: IN	STD_LOGIC;
+		o_q, o_qBar	: OUT	STD_LOGIC);
+		
+END COMPONENT ; 
+
+COMPONENT mux_8_a_1 IS 
+ port(
+    a0      : in  std_logic_vector(7 downto 0);
+    a1      : in  std_logic_vector(7 downto 0);
+	 a2      : in  std_logic_vector(7 downto 0);
+	 a3      : in  std_logic_vector(7 downto 0);
+	 a4      : in  std_logic_vector(7 downto 0);
+	 a5      : in  std_logic_vector(7 downto 0);
+	 a6      : in  std_logic_vector(7 downto 0);
+	 a7      : in  std_logic_vector(7 downto 0);
+    sel     : in  std_logic_vector(2 downto 0);
+    b       : out std_logic_vector(7 downto 0)
+  );
+END COMPONENT;
+
+
+BEGIN 
+W2 <= present_state(1);
+W1 <= present_state(0);
+W0 <= finish_shifting;
+INT_RTDV <= RTDV_UART_EMETTEUR;
+
+Y2 : enARdFF_2 
+PORT MAP (i_resetBar => i_resetBar, i_clock => i_clock, i_enable => load_UART_FSM,
+          i_d => (NOT(W2) AND NOT(W1) AND NOT(W0) AND ((INT_Y2 AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (INT_Y2 AND NOT(INT_Y1) AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0)))) 
+          OR (NOT(W2) AND NOT(W1) AND W0 AND ( (NOT(INT_Y2) AND INT_Y1 AND INT_Y0) OR (INT_Y2 AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0)))) 
+          OR (NOT(W2) AND W1 AND NOT(W0) AND ((INT_Y2 AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (INT_Y2 AND NOT(INT_Y1) AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0)))) 
+          OR (NOT(W2) AND W1 AND W0 AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1 AND INT_Y0) OR (INT_Y2 AND NOT(INT_Y1) AND NOT(INT_Y0))))
+          OR (W2 AND NOT(W1) AND NOT(W0) AND ( (INT_Y2 AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (INT_Y2 AND NOT(INT_Y1) AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0))))
+          OR (W2 AND NOT(W1) AND W0 AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND NOT(INT_Y1) AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0)))) 
+          OR (W2 AND W1 AND NOT(W0) AND ( (INT_Y2 AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (INT_Y2 AND NOT(INT_Y1) AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0)))) 
+          OR (W2 AND W1 AND W0 AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1 AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0)))) ,
+          o_q => INT_Y2			 );
+			 
+Y1 : enARdFF_2 
+PORT MAP(i_resetBar => i_resetBar, i_clock => i_clock, i_enable => load_UART_FSM,
+         i_d => (NOT(W2) AND NOT(W1) AND NOT(W0) AND ( (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1 AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0))))       
+	      OR ( NOT(W2) AND NOT(W1) AND W0 AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND INT_Y0) OR (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0))))
+	      OR ( NOT(W2) AND W1 AND NOT(W0) AND ( (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1 AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0)))) 
+	      OR ( NOT(W2) AND W1 AND W0 AND( (NOT(INT_Y2) AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0))))	
+		   OR ( W2 AND NOT(W1) AND NOT(W0) AND ( (NOT(INT_Y2) AND INT_Y1  AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1  AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0))))
+         OR ( W2 AND NOT(W1) AND W0 AND ( (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (INT_Y2 AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0)))) 
+         OR ( W2 AND W1 AND NOT(W0) AND ( (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1 AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0)))) 
+         OR ( W2 AND W1 AND W0 AND ( (NOT(INT_Y2) AND INT_Y1  AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1 AND INT_Y0) OR (INT_Y2 AND NOT(INT_Y1) AND NOT(INT_Y0))))	,
+	      o_q => INT_Y1		) ;
+			
+Y0 : enARdFF_2 
+PORT MAP(i_resetBar => i_resetBar, i_clock => i_clock, i_enable => load_UART_FSM,
+         i_d => ( NOT(W2) AND NOT(W1) AND NOT(W0) AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND INT_Y0) OR (NOT(INT_Y2) AND INT_Y1  AND INT_Y0) OR (INT_Y2 AND NOT(INT_Y1) AND INT_Y0)))
+         OR ( NOT(W2) AND NOT(W1) AND W0 AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (INT_Y2 AND NOT(INT_Y1) AND NOT(INT_Y0))))
+	      OR ( NOT(W2) AND W1 AND NOT(W0) AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND INT_Y0) OR (NOT(INT_Y2) AND INT_Y1 AND INT_Y0) OR (INT_Y2 AND NOT(INT_Y1) AND INT_Y0 )))
+	      OR ( NOT(W2) AND W1 AND W0 AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND INT_Y0) OR (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (INT_Y2 AND NOT(INT_Y1) AND NOT(INT_Y0))))
+	      OR ( W2 AND NOT(W1) AND NOT(W0) AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND INT_Y0) OR (NOT(INT_Y2) AND INT_Y1 AND INT_Y0) OR (INT_Y2 AND NOT(INT_Y1) AND INT_Y0))) 
+	      OR ( W2 AND NOT(W1) AND W0 AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND INT_Y0) OR (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1 AND INT_Y0)))
+	      OR ( W2 AND W1 AND NOT(W0) AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND INT_Y0) OR (NOT(INT_Y2) AND INT_Y1 AND INT_Y0) OR (INT_Y2 AND NOT(INT_Y1) AND INT_Y0)))	
+		   OR ( W2 AND W1 AND W0 AND ( (NOT(INT_Y2) AND NOT(INT_Y1) AND (INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0))))	,
+	      o_q => INT_Y0		);
+			
+Multiplexeur : mux_8_a_1 
+PORT MAP (a0 => "01010000", --P
+          a1 => "01001100", --L
+	       a2 => "01110110", --v
+	       a3 => "01101010", --j
+	       a4 => "01110010", --r
+	       a5 => "01011111", --_ (tiret du bas)
+	       a6 => "00001101", -- CR (Carriage return)
+	       a7 => "00000000", -- caracter not used
+			 sel(2) => (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (INT_Y2 AND NOT(INT_Y1) AND NOT(INT_Y0)) OR (INT_Y2 AND NOT(INT_Y1) AND INT_Y0),
+		    sel(1) => (NOT(INT_Y2) AND NOT(INT_Y1) AND INT_Y0) OR (INT_Y2 AND NOT(INT_Y1) AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0)), 
+		    sel(0) => (NOT(INT_Y2) AND INT_Y1 AND NOT(INT_Y0)) OR (NOT(INT_Y2) AND INT_Y1 AND INT_Y0) OR (INT_Y2 AND INT_Y1 AND NOT(INT_Y0)),
+			 b => int_sortie_UART_FSM 
+	       		 );
+					 
+
+o_caractere_8bits <= int_sortie_UART_FSM;
+load_RTD <= INT_RTDV;
+
+END STRUCT;
