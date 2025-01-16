@@ -30,6 +30,6 @@ Simulates UART communication in a loopback configuration.
 Validates data transmission and reception functionality.
 
 ## Hardware Requirements
-FPGA Board: Altera DE2 or equivalent.
-MAX232 Chip: For signal level conversion between CMOS and RS-232.
-Serial Terminal Software: PuTTY or similar for monitoring communication.
+- FPGA Board: Altera DE2 or equivalent.
+- MAX232 Chip: For signal level conversion between CMOS and RS-232.
+- Serial Terminal Software: PuTTY or similar for monitoring communication.
